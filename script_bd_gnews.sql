@@ -1,5 +1,5 @@
 CREATE TABLE noticia(
-
+  
   id_noticia SERIAL PRIMARY KEY,
   titulo varchar(255),
   subtitulo varchar(255),
@@ -7,17 +7,22 @@ CREATE TABLE noticia(
   status varchar(255),
   data_publicacao timestamp,
   data_criacao timestamp,
-  fk_jornalista int,
-  fk_categoria int,
-  CONSTRAINT fk_jornalista FOREIGN KEY (fk_jornalista),
-  CONSTRAINT fk_categoria FOREIGN KEY (fk_categoria)
+  id_jornalista int,
+  id_categoria int,
+  CONSTRAINT id_jornalista FOREIGN key (id_jornalista),
+  REFERENCES jornalista (id_jornalista) 
+  CONSTRAINT id_categoria FOREIGN key (id_categoria),
+  REFERENCES categoria (id_categoria) 
+
 );
 
 CREATE TABLE curtida_reacao(
 
   id_curtida SERIAL PRIMARY KEY,
-  fk_jornalista int
-  CONSTRAINT fk_jotnalista FOREIGN KEY (fk_jornalista)
-  data_reacao timestamp
+  id_jornalista int,
+  data_reacao timestamp,
+  CONSTRAINT id_jornalista FOREIGN key (id_jornalista),
+  REFERENCES jornalista (id_jornalista)
+
 );
 
